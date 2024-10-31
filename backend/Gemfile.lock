@@ -200,6 +200,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.1.8)
+    rack-cors (2.0.2)
+      rack (>= 2.0.0)
     rack-livereload (0.6.1)
       rack (>= 3.0, < 3.2)
     rack-session (2.0.0)
@@ -341,6 +343,7 @@ DEPENDENCIES
   jbuilder
   listen
   puma (>= 5.0)
+  rack-cors
   rack-livereload
   rails (~> 7.2.2)
   rubocop-rails-omakase
