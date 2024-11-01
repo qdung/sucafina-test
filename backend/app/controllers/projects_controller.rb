@@ -2,9 +2,12 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [ :show, :update, :destroy ]
 
   # GET /projects
-  def index
-    @projects = Project.all
-    render json: { data: @projects, status: "success" }, status: 200
+  def index 
+    page = params[:page].to_i || 1
+    limit = params[:limit].to_i || 10
+    offset = (page - 1) * limit
+    @projects = Project.limit(limit).offset(offset)
+    render json: { data: @projects, status: "success" }, status: 200        
   end
 
   # GET /projects/:id

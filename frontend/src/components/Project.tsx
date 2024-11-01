@@ -1,24 +1,21 @@
 import { memo } from "react";
+import { IProject } from "../types";
 
 export const Project = memo(
-  ({
-    title,
-    description,
-    onRemove,
-    onEdit,
-  }: {
-    title: string;
-    description: string;
-    onRemove: () => void;
-    onEdit: () => void;
-  }) => {
+  ({ title, description, onRemove, onEdit }: IProject) => {
     return (
       <div className="w-full flex flex-col items-start py-4 px-8 rounded-lg shadow-md border relative">
         <div className="absolute right-2 z-10 flex flex-col items-end">
-          <p className="cursor-pointer text-red-500" onClick={() => onRemove()}>
+          <p
+            className="cursor-pointer text-red-500"
+            onClick={() => onRemove && onRemove()}
+          >
             Remove
           </p>
-          <p className="cursor-pointer text-gray-600" onClick={() => onEdit()}>
+          <p
+            className="cursor-pointer text-gray-600"
+            onClick={() => onEdit && onEdit()}
+          >
             Edit
           </p>
         </div>

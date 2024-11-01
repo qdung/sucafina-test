@@ -1,6 +1,5 @@
 import "./App.css";
-import { useProjects } from "./hooks";
-import { Header, Loading, ModalProject, Project } from "./components";
+import { Loading } from "./components";
 import { PersistGate } from "redux-persist/integration/react";
 import { Suspense } from "react";
 import { Provider } from "react-redux";

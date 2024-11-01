@@ -30,14 +30,14 @@ export const ModalProject = (props: IModal & { type: string }) => {
         props.type === "create"
           ? "http://localhost:3000/projects"
           : `http://localhost:3000/projects/${props.extraData.id}`;
-      const response = await fetch(url, {
+      await fetch(url, {
         method: props.type === "create" ? "POST" : "PUT",
         body: JSON.stringify(data),
         headers: {
           "content-type": "application/json",
         },
       });
-      const json = await response.json();
+
       props.callback && props.callback();
     } catch (error) {}
   };
@@ -86,23 +86,3 @@ export const ModalProject = (props: IModal & { type: string }) => {
     </Modal>
   );
 };
-
-const FormInput = ({
-  label,
-  name,
-  onChange,
-}: {
-  label: string;
-  name: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-}) => (
-  <div className="flex items-center justify-between mb-4 p-2 w-full">
-    <label className="text-left">{label}</label>
-    <input
-      onChange={onChange}
-      className="w- ml-2 border p-2 rounded-lg"
-      name={name}
-      placeholder={`${name} of project`}
-    />
-  </div>
-);
