@@ -48,17 +48,13 @@ if ! check_rails_version; then
   gem install rails -v 7.0.0
 fi
 
-# Create Rails backend
-echo "Creating Rails backend..."
-rails new backend
+# Run Rails backend
+echo "Running Rails backend..."
 cd backend
-rails db:create
-
-# Start Rails server
-echo "Starting Rails server..."
+bundle install
 rails server &
-
 cd ..
+
 
 # Install Node.js and Yarn
 echo "Installing Node.js and Yarn..."
@@ -67,17 +63,9 @@ sudo apt-get install -y nodejs
 npm install --global yarn
 
 # Create React frontend with Vite
-echo "Creating React frontend with Vite..."
-mkdir frontend
+echo "Running React frontend with Vite..."
 cd frontend
-npm create vite@latest my-app -- --template react
-cd my-app
 npm install
-cd ../..
-
-# Final structure
-echo "Setting up final structure..."
-mv frontend/my-app frontend
-rm -rf frontend/my-app
+npm run dev
 
 echo "Setup complete!"
